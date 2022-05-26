@@ -3,7 +3,7 @@
     - eu-west-1
     enableMetricData: true
     metrics: 
-      - name: : NumberOfMessagesPublished
+      - name: NumberOfMessagesPublished
         statistics:
         - Sum
         period: 300

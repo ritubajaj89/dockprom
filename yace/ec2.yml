@@ -59,8 +59,4 @@
         statistics:
         - Sum
         period: 60
-        length: 600
-      - name: StatusCheckFailed_System
-        - Sum
-        period: 60
-        length: 600    
+        length: 600  
