@@ -1,0 +1,948 @@
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ sort
++ uniq
++ awk -F : '{print $3}'
+++ awk '-F"' '{print $4}'
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
+++ grep region
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   305k      0 --:--:-- --:--:-- --:--:--  464k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ sort
++ awk -F : '{print $3}'
++ uniq
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
+++ grep region
+++ awk '-F"' '{print $4}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0  65900      0 --:--:-- --:--:-- --:--:-- 68000
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ sort
++ awk -F : '{print $3}'
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
++ uniq
+++ grep region
+++ awk '-F"' '{print $4}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   267k      0 --:--:-- --:--:-- --:--:--  464k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ awk -F : '{print $3}'
++ sort
++ uniq
+++ awk '-F"' '{print $4}'
+++ grep region
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   358k      0 --:--:-- --:--:-- --:--:--  464k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ uniq
++ sort
++ awk -F : '{print $3}'
+++ grep region
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
+++ awk '-F"' '{print $4}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   275k      0 --:--:-- --:--:-- --:--:--  464k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ uniq
++ awk -F : '{print $3}'
++ sort
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
+++ awk '-F"' '{print $4}'
+++ grep region
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   337k      0 --:--:-- --:--:-- --:--:--  464k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ sort
++ uniq
++ awk -F : '{print $3}'
+++ grep region
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
+++ awk '-F"' '{print $4}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   304k      0 --:--:-- --:--:-- --:--:--  464k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
+++ awk '-F"' '{print $4}'
++ uniq
+++ grep region
++ sort
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
++ awk -F : '{print $3}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   194k      0 --:--:-- --:--:-- --:--:--  232k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ sort
++ uniq
++ awk -F : '{print $3}'
+++ grep region
+++ awk '-F"' '{print $4}'
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   421k      0 --:--:-- --:--:-- --:--:--  464k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns
+ssm'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ssm ]]
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
++ RES_FILE=/root/dockprom/resource-in-use.txt
++ TEMP_FILE=/tmp/yace-config.yml
++ YACE_CONF_FILE=/etc/yace/config.yml
++ sort
++ awk -F : '{print $3}'
+++ curl http://169.254.169.254/latest/dynamic/instance-identity/document
++ uniq
+++ grep region
+++ awk '-F"' '{print $4}'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   476  100   476    0     0   356k      0 --:--:-- --:--:-- --:--:--  464k
++ aws resourcegroupstaggingapi get-resources --region eu-west-1 --query 'ResourceTagMappingList[].ResourceARN'
++ LIST='
+backup
+cloudformation
+cloudwatch
+cognito-identity
+cognito-idp
+config
+ec2
+elasticfilesystem
+es
+events
+lambda
+logs
+s3
+secretsmanager
+servicecatalog
+sns
+ssm'
++ array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
+s3" "shield" "sns" "sqs" "vpn")
++ '[' -f /root/dockprom/resource-in-use.txt ']'
++ '[' -s /root/dockprom/resource-in-use.txt ']'
++ echo 'File exists and is not empty'
+File exists and is not empty
++ cat /root/dockprom/yace/config.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ backup ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudformation ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cloudwatch ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-identity ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ cognito-idp ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ config ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ec2 ]]
++ cat /root/dockprom/yace/ec2.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ elasticfilesystem ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ es ]]
++ cat /root/dockprom/yace/es.yml
+cat: /root/dockprom/yace/es.yml: No such file or directory
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ events ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ lambda ]]
++ cat /root/dockprom/yace/lambda.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ logs ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ s3 ]]
++ cat /root/dockprom/yace/s3.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ secretsmanager ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ servicecatalog ]]
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ sns ]]
++ cat /root/dockprom/yace/sns.yml
++ for i in '$LIST'
++ [[  alb apigateway asg athena cloudfront ebs ec ec2 ecs-containerinsights ecs-svc efs elb firehose kinesis lambda ngw nlb rds redshift route53 
+s3 shield sns sqs vpn  =~ ssm ]]
++ cmp -s /tmp/yace-config.yml /etc/yace/config.yml
++ echo 'No new resources have been added'
+No new resources have been added
