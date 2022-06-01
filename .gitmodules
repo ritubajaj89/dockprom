@@ -1,0 +1,3 @@
+[submodule "prom2kafka"]
+	path = prom2kafka
+	url = https://tools.adidas-group.com/bitbucket/scm/tm/prom2kafka.git
