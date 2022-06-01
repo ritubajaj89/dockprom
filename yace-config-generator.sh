@@ -18,6 +18,7 @@ then
         if [[ "${array[*]} " =~ $i ]]; then
           cat /root/dockprom/yace/$i.yml >> $TEMP_FILE;
           echo "file $i added"
+          cp $TEMP_FILE $YACE_CONF_FILE
         fi  
       done
     else
