@@ -14,18 +14,17 @@ then
     then
       echo "File exists and is not empty"
       cat /root/dockprom/yace/config.yml >> $TEMP_FILE
+      for i in $LIST; do
+        if [[ " ${array[*]} " =~ $i ]]; then
+          cat /root/dockprom/yace/$i.yml >> $TEMP_FILE;
+        fi
+      done
     else
       echo "File exists but empty"
     fi
 else
     echo "File not exists"
 fi
-for i in $LIST; do
-if [[ " ${array[*]} " =~ $i ]]; then
-           cat /root/dockprom/yace/$i.yml >> $TEMP_FILE;
-#   echo "$i.yml has been added to config.yml";
-fi
-done
 if cmp -s "$TEMP_FILE" "$YACE_CONF_FILE"; then
  echo "Files are different therefore updating configuration"   
  mv $YACE_CONF_FILE /etc/yace/config_$(date +"%Y-%m-%d-%H-%M-%S").yml
