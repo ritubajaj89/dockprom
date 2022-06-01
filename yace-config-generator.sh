@@ -18,9 +18,10 @@ then
         if [[ "${array[*]} " =~ $i ]]; then
           cat /root/dockprom/yace/$i.yml >> $TEMP_FILE;
           echo "file $i added"
-          cp $TEMP_FILE $YACE_CONF_FILE
         fi  
       done
+      cp $TEMP_FILE $YACE_CONF_FILE
+      echo "placed config at right path"
     else
       echo "File exists but empty"
     fi
