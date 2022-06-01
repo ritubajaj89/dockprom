@@ -3,7 +3,7 @@ set -x
 #mv /etc/yace/config.yml /etc/yace/config_$(date +%d-%m-%Y).yml
 RES_FILE="/root/dockprom/resource-in-use.txt"
 TEMP_FILE="/tmp/yace-config.yml"
-YACE_CONF_FILE="/etc/yace/config.yml"
+YACE_CONF_FILE="/etc/config/yace/config.yml"
 aws resourcegroupstaggingapi get-resources --region $(curl http://169.254.169.254/latest/dynamic/instance-identity/document|grep region|awk -F\" '{print $4}') --query 'ResourceTagMappingList[].ResourceARN'| awk -F ':' '{print $3}' | sort | uniq > $RES_FILE
 LIST="$(< $RES_FILE)"
 array=("alb" "apigateway" "asg" "athena" "cloudfront" "ebs" "ec" "ec2" "ecs-containerinsights" "ecs-svc" "efs" "elb" "firehose" "kinesis" "lambda" "ngw" "nlb" "rds" "redshift" "route53" "
