@@ -5,6 +5,7 @@
 #P2K_STATUS="$(systemctl is-active prom2kafka.service)"
 export INSTANCE=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 export REGION=$(curl http://169.254.169.254/latest/dynamic/instance-identity/document|grep region|awk -F\" '{print $4}')
+echo "$(date)"
 echo $INSTANCE
 if [ "$(systemctl is-active yace.service)" != "active" ]; then	
     systemctl restart yace.service
