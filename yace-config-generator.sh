@@ -31,7 +31,7 @@ fi
 if [ -f ${YACE_CONF_FILE} ]; then
   if cmp -s "$TEMP_FILE" "$YACE_CONF_FILE"; then
     echo "Files are different therefore updating configuration"   
-    mv $YACE_CONF_FILE /etc/yace/config_$(date +"%Y-%m-%d-%H-%M-%S").yml
+    mv $YACE_CONF_FILE /etc/config/yace/config_$(date +"%Y-%m-%d-%H-%M-%S").yml
     cp $TEMP_FILE $YACE_CONF_FILE
     rm -rf $TEMP_FILE
     echo "Updated yace config for new aws resources"
