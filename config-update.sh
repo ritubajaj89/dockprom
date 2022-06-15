@@ -3,15 +3,15 @@ set -x
 # Set location variables:
 tmp_file_location=/root/config-tmp
 prom_config_location=/etc/config/prometheus
-am_config_location=/etc/config/alertmanager/
-yace_config_location=/root/dockprom/yace/
+am_config_location=/etc/config/alertmanager
+yace_config_location=/root/dockprom/yace
 # Create new directory to store today's messages:
 date=$(date +"%Y-%m-%d-%H-%M-%S")
 [[ -d ${tmp_file_location}/$date ]] || mkdir ${tmp_file_location}/$date
 # Retrieve new messages from S3 and save to tmpemails/ directory:
 aws s3 cp --recursive s3://config-test-metrics/ $tmp_file_location/$date
 cd $tmp_file_location/$date/prometheus
-prom_list=`find . -type f`
+prom_list=`find . -type f -printf "%f\n"`
 
 for a in $prom_list; do
    if [ ! -f "$prom_config_location/$a" ]; then
