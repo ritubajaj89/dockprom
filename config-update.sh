@@ -27,8 +27,9 @@ for a in $prom_list; do
                 promtool check config $prom_config_location/prometheus.yml | grep -i "FAILED" 
                 if [[ "$?" == "0" ]]; then
                     echo "Configuration file is invalid"
-                fi
-            fi     
+                fi  
+            fi 
+            break    
             mv "$prom_config_location/$a" "$prom_config_location/$a"_bkp_"$date"
             cp $a $prom_config_location 
             curl -s -XPOST localhost:9090/-/reload 
