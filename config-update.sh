@@ -24,7 +24,7 @@ for a in $prom_list; do
   	   if [[ "$?" == "1" ]]; then
     	    # File exists but is different so copy changed file
          promtool check config $prom_config_location/prometheus.yml | grep -i "FAILED" 
-        	mv $prom_config_location/$a $prom_config_location/$a_bkp_$date
+        	mv "$prom_config_location/$a" "$prom_config_location/$a_bkp_$date"
         	cp $a $prom_config_location 
         	if [[ "$?" == "1" ]]; then
         		echo "Configuration file is invalid"
