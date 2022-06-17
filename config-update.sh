@@ -29,7 +29,7 @@ for a in $prom_list; do
                     echo "Configuration file is invalid"
                 fi
             fi     
-            mv "$prom_config_location/$a" "$prom_config_location/$a_bkp_$date"
+            mv "$prom_config_location/$a" "$prom_config_location/$a"_bkp_"$date"
             cp $a $prom_config_location 
             curl -s -XPOST localhost:9090/-/reload 
             echo "Config reloaded successfully"
