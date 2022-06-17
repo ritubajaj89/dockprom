@@ -23,15 +23,16 @@ for a in $prom_list; do
 	   diff $a $prom_config_location/$a > /dev/null
   	   if [[ "$?" == "1" ]]; then
     	    # File exists but is different so copy changed file
+         promtool check config $prom_config_location/prometheus.yml | grep -i "FAILED" 
         	mv $prom_config_location/$a $prom_config_location/$a_bkp_$date
-        	cp $a $prom_config_location
-        	promtool check config $prom_config_location/prometheus.yml | grep -i "FAILED" 
+        	cp $a $prom_config_location 
         	if [[ "$?" == "1" ]]; then
         		echo "Configuration file is invalid"
         	fi	
         	curl -s -XPOST localhost:9090/-/reload 
         	echo "Config reloaded after prm"
    	   fi
+    continue      
    fi	
 done
 # Checking configuration for alertmanager
@@ -41,12 +42,13 @@ diff alertmanager.yml $prom_config_location/alertmanager.yml > /dev/null
         # File exists but is different so copy changed file
         mv $prom_config_location/alertmanager.yml $prom_config_location/alertmanager.yml_bkp_$date
         cp alertmanager.yml $prom_config_location
-		amtool check-config /etc/config/prometheus/alertmanager.yml | grep -i 'SUCCESS'
+		  amtool check-config /etc/config/prometheus/alertmanager.yml | grep -i 'SUCCESS'
         if [[ "$?" == "1" ]]; then
         	echo "Configuration file is invalid"
         fi	
         systemctl restart alertmanager 
         echo "Alertmanager Service has been restarted"
+    continue  
    fi		
 # Checking configuration for yace
 cd $tmp_file_location/$date/yace
@@ -54,7 +56,7 @@ yace_list=`find . -type f -printf "%f\n"`
 for i in $yace_list; do
    if [ ! -f "$yace_config_location/$i" ]; then
         cp $i $yace_config_location
-      continue
+    continue
    fi
    if [ -f "$yace_config_location/$i" ]; then
 	   diff $i $yace_config_location/$i > /dev/null
@@ -64,5 +66,6 @@ for i in $yace_list; do
         	cp $i $yace_config_location       	
         	echo "Config will be reloaded on next 10 min"
    	   fi
+    continue   
    fi	
 done
