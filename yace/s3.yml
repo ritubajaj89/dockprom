@@ -10,7 +10,7 @@
         - Average
         - Sum
         period: 300
-        length: 36000
+        length: 3600
       - name: GetRequests
         statistics:
         - Sum
