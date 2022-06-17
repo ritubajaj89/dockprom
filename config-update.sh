@@ -23,16 +23,16 @@ for a in $prom_list; do
 	   diff $a $prom_config_location/$a > /dev/null
   	   if [[ "$?" == "1" ]]; then
     	    # File exists but is different so copy changed file
-         promtool check config $prom_config_location/prometheus.yml | grep -i "FAILED" 
-        	mv "$prom_config_location/$a" "$prom_config_location/$a_bkp_$date"
-        	cp $a $prom_config_location 
-        	if [[ "$?" == "1" ]]; then
-        		echo "Configuration file is invalid"
-        	fi	
-        	curl -s -XPOST localhost:9090/-/reload 
-        	echo "Config reloaded after prm"
-   	   fi
-    continue      
+            promtool check config $prom_config_location/prometheus.yml | grep -i "FAILED" 
+            if [[ "$?" == "0" ]]; then
+            echo "Configuration file is invalid"
+            fi 
+            mv $prom_config_location/$a $prom_config_location/$a_bkp_$date
+            cp $a $prom_config_location 
+            curl -s -XPOST localhost:9090/-/reload 
+            echo "Config reloaded successfully"
+    	fi
+   continue      
    fi	
 done
 # Checking configuration for alertmanager
@@ -56,7 +56,7 @@ yace_list=`find . -type f -printf "%f\n"`
 for i in $yace_list; do
    if [ ! -f "$yace_config_location/$i" ]; then
         cp $i $yace_config_location
-    continue
+      continue
    fi
    if [ -f "$yace_config_location/$i" ]; then
 	   diff $i $yace_config_location/$i > /dev/null
