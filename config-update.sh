@@ -23,13 +23,6 @@ for a in $prom_list; do
 	   diff $a $prom_config_location/$a > /dev/null
   	   if [[ "$?" == "1" ]]; then
     	    # File exists but is different so copy changed file
-            if [[ "$a" == "prometheus.yml" ]]; then
-                promtool check config $a | grep -i "SUCCESS" 
-                if [[ "$?" == "0" ]]; then
-                    echo "Configuration file is invalid"
-                    continue 
-                fi      
-            fi    
             mv "$prom_config_location/$a" "$prom_config_location/$a"_bkp_"$date"
             cp $a $prom_config_location 
             curl -s -XPOST localhost:9090/-/reload 
