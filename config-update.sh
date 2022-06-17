@@ -25,7 +25,7 @@ for a in $prom_list; do
     	    # File exists but is different so copy changed file
             if [[ "$a" == "prometheus.yml" ]]; then
                 promtool check config $a | grep -i "SUCCESS" 
-                if [[ "$?" == "1" ]]; then
+                if [[ "$?" == "0" ]]; then
                     echo "Configuration file is invalid"
                     continue 
                 fi      
@@ -46,11 +46,12 @@ diff alertmanager.yml $prom_config_location/alertmanager.yml > /dev/null
 		amtool check-config alertmanager.yml | grep -i 'SUCCESS'
         if [[ "$?" == "1" ]]; then
         	echo "Configuration file is invalid"    
-        fi	
+        else	
         mv $prom_config_location/alertmanager.yml $prom_config_location/alertmanager.yml_bkp_$date
         cp alertmanager.yml $prom_config_location
         systemctl restart alertmanager 
         echo "Alertmanager Service has been restarted" 
+        fi
    fi		
 # Checking configuration for yace
 cd $tmp_file_location/$date/yace
