@@ -36,10 +36,6 @@ cd $tmp_file_location/$date/alertmanager
 diff alertmanager.yml $prom_config_location/alertmanager.yml > /dev/null
    if [[ "$?" == "1" ]]; then
         # File exists but is different so copy changed file
-		amtool check-config alertmanager.yml | grep -i 'SUCCESS'
-        if [[ "$?" == "1" ]]; then
-        	echo "Configuration file is invalid"    
-        else	
         mv $prom_config_location/alertmanager.yml $prom_config_location/alertmanager.yml_bkp_$date
         cp alertmanager.yml $prom_config_location
         systemctl restart alertmanager 
@@ -49,7 +45,7 @@ diff alertmanager.yml $prom_config_location/alertmanager.yml > /dev/null
 # # Checking configuration for yace
 # cd $tmp_file_location/$date/yace
 # yace_list=`find . -type f -printf "%f\n"`
-# for i in $yace_list; do
+# for i in $yace_list; do        
 #    if [ ! -f "$yace_config_location/$i" ]; then
 #         cp $i $yace_config_location
 #       continue
