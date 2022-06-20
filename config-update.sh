@@ -21,7 +21,7 @@ for a in $prom_list; do
    fi
    if [ -f "$prom_config_location/$a" ]; then
 	   diff $a $prom_config_location/$a > /dev/null
-  	   if [[ "$?" == "1" ]]; then
+  	   if [[ $? -ne 0 ]]; then
     	    # File exists but is different so copy changed file
             mv "$prom_config_location/$a" "$prom_config_location/$a"_bkp_"$date"
             cp $a $prom_config_location 
@@ -34,12 +34,14 @@ done
 # Checking configuration for alertmanager
 cd $tmp_file_location/$date/alertmanager
 diff alertmanager.yml $prom_config_location/alertmanager.yml > /dev/null
-   if [[ "$?" == "1" ]]; then
+   if [[ $? -ne 0 ]]; then
         # File exists but is different so copy changed file
         mv $prom_config_location/alertmanager.yml $prom_config_location/alertmanager.yml_bkp_$date
         cp alertmanager.yml $prom_config_location
         systemctl restart alertmanager 
-        echo "Alertmanager Service has been restarted" 
+        sleep 5s
+        if [ "$(systemctl is-active yace.service)" = "active" ]; then
+            echo "Alertmanager Service has been restarted" 
         fi
    fi		
 # # Checking configuration for yace
