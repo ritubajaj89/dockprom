@@ -44,22 +44,22 @@ diff alertmanager.yml $prom_config_location/alertmanager.yml > /dev/null
             echo "Alertmanager Service has been restarted" 
         fi
    fi		
-# # Checking configuration for yace
-# cd $tmp_file_location/$date/yace
-# yace_list=`find . -type f -printf "%f\n"`
-# for i in $yace_list; do        
-#    if [ ! -f "$yace_config_location/$i" ]; then
-#         cp $i $yace_config_location
-#       continue
-#    fi
-#    if [ -f "$yace_config_location/$i" ]; then
-# 	   diff $i $yace_config_location/$i > /dev/null
-#   	   if [[ "$?" == "1" ]]; then
-#     	    # File exists but is different so copy changed file
-#         	mv $yace_config_location/$i $yace_config_location/$i_bkp_$date
-#         	cp $i $yace_config_location       	
-#         	echo "Config will be reloaded on next 10 min"
-#    	   fi
-#     continue   
-#    fi	
-# done
+# Checking configuration for yace
+cd $tmp_file_location/$date/yace
+yace_list=`find . -type f -printf "%f\n"`
+for i in $yace_list; do        
+   if [ ! -f "$yace_config_location/$i" ]; then
+        cp $i $yace_config_location
+      continue
+   fi
+   if [ -f "$yace_config_location/$i" ]; then
+	   diff $i $yace_config_location/$i > /dev/null
+  	   if [[ $? -ne 0 ]]; then
+    	    # File exists but is different so copy changed file
+        	mv "$yace_config_location/$i" "$yace_config_location/$i"_bkp_"$date"
+        	cp $i $yace_config_location       	
+        	echo "Config will be reloaded on next 10 min"
+   	   fi
+    continue   
+   fi	
+done
