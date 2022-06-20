@@ -4,11 +4,12 @@ set -x
 tmp_file_location=/root/config-tmp
 prom_config_location=/etc/config/prometheus
 yace_config_location=/root/dockprom/yace
+bucket_name=$1
 # Create new directory to store today's messages:
 date=$(date +"%Y-%m-%d-%H-%M-%S")
 [[ -d ${tmp_file_location}/$date ]] || mkdir ${tmp_file_location}/$date
 # Retrieve new messages from S3 and save to tmpemails/ directory:
-aws s3 cp --recursive s3://config-test-metrics/ $tmp_file_location/$date
+aws s3 cp --recursive $bucket_name $tmp_file_location/$date
 # Checking configuration for prometheus
 cd $tmp_file_location/$date/prometheus
 prom_list=`find . -type f -printf "%f\n"`
