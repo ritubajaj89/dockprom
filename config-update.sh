@@ -5,7 +5,7 @@ tmp_file_location=/root/config-tmp
 prom_config_location=/etc/config/prometheus
 yace_config_location=/root/dockprom/yace
 region="$(curl http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)"
-account_id="$(curl http://169.254.169.254/latest/dynamic/instance-identity/document | jq .accountId)"
+account_id="$(curl http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .accountId)"
 echo 
 
 # Create new directory to store today's messages:
